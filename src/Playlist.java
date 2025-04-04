@@ -29,7 +29,7 @@ public class Playlist {
         }
         tracks.remove(track);
     }
-    public void display() {
+    public void displayTracks() {
         System.out.println("Tracks: " + this.name);
         if (this.tracks.isEmpty()) {
             System.out.println("Nothing to show");
