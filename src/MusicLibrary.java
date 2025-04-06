@@ -2,12 +2,16 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MusicLibrary {
-    private ArrayList<String> tracks;
-    private ArrayList<Playlist> playlists;
+    private final ArrayList<String> tracks;
+    private final ArrayList<Playlist> playlists;
+    private final String name;
+    private final String owner;
 
-    public MusicLibrary() {
+    public MusicLibrary(String name, String owner) {
         this.tracks = new ArrayList<>();
         this.playlists = new ArrayList<>();
+        this.name = name;
+        this.owner = owner;
     }
 
     public void addTrack(String track) {
@@ -73,7 +77,7 @@ public class MusicLibrary {
             }
         }
     }
-    public void displayPlaylist() {
+    public void displayPlaylist(String playlistName) {
         for (Playlist playlist : playlists) {
             System.out.println(playlist);
         }
