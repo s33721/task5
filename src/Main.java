@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
 
-// Create a new music library
+        // Create a new music library
         MusicLibrary myLibrary = new MusicLibrary("Rock Collection",
                 "John Smith");
         // Add tracks to the library

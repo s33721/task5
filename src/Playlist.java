@@ -7,7 +7,7 @@ public class Playlist {
 
     public Playlist(String name) {
         this.name = name;
-        tracks = new ArrayList<>();
+        this.tracks = new ArrayList<>();
     }
 
     public String getName() {
@@ -27,8 +27,9 @@ public class Playlist {
         if (!isRemoved) {
             System.out.println("Track " + track + " does not exist");
         }
-        tracks.remove(track);
+
     }
+
     public void displayTracks() {
         System.out.println("Tracks: " + this.name);
         if (this.tracks.isEmpty()) {
@@ -39,7 +40,6 @@ public class Playlist {
             }
         }
     }
-
 
 
 }

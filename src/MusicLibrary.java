@@ -40,28 +40,28 @@ public class MusicLibrary {
         }
     }
 
-    public void searchTracks(String track) {
-        if (tracks.contains(track)) {
-            System.out.println("Track found " + track);
+    public void searchTracks(String phrase) {
+        if (tracks.contains(phrase)) {
+            System.out.println("Track found " + phrase);
         } else {
             System.out.println("Track does not exist");
         }
     }
 
-    public boolean findPlaylist(String name) {
+    public Playlist findPlaylist(String playlistName) {
         for (Playlist playlist : playlists) {
-            if (playlist.getName().equalsIgnoreCase(name)) {
-                System.out.println("Playlist found " + playlist);
-                return true;
+            if (playlist.getName().equalsIgnoreCase(playlistName)) {
+                System.out.println("Playlist found " + playlist.getName());
+                return playlist;
             }
         }
         System.out.println("Playlist does not exist");
-        return false;
+        return null;
     }
 
     public void createPlaylist(String playlistName) {
         var existingPlayList = findPlaylist(playlistName);
-        if (existingPlayList) {
+        if (existingPlayList != null) {
             System.out.println("Playlist already exists");
         } else {
             this.playlists.add(new Playlist(playlistName));
@@ -69,27 +69,36 @@ public class MusicLibrary {
     }
 
     public void addTrackToPlaylist(String track, String playlistName) {
-        for (Playlist playlist : playlists) {
-            if (playlist.getName().equalsIgnoreCase(playlistName)) {
-                playlist.addTrack(track);
-            } else {
-                System.out.println("Playlist does not exist");
-            }
+        if (!tracks.contains(track)) {
+            tracks.add(track);
+        }
+        Playlist existingPlaylist = findPlaylist(playlistName);
+        if (existingPlaylist != null) {
+            existingPlaylist.addTrack(track);
+        } else {
+            System.out.println("Playlist does not exist");
         }
     }
+
     public void displayPlaylist(String playlistName) {
-        for (Playlist playlist : playlists) {
-            System.out.println(playlist);
+        Playlist existingPlaylist = findPlaylist(playlistName);
+        if (existingPlaylist != null) {
+            existingPlaylist.displayTracks();
+        } else {
+            System.out.println("Playlist does not exist");
         }
     }
+
     public void displayAllPlaylists() {
-        for (int i = 0; i < playlists.size(); i++) {
-            System.out.println(playlists.get(i));
+        for (Playlist playlist : playlists){
+            playlist.displayTracks();
         }
     }
+
     public int getTrackCount() {
         return tracks.size();
     }
+
     public int getPlaylistCount() {
         return playlists.size();
     }
