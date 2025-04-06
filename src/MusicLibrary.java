@@ -87,6 +87,12 @@ public class MusicLibrary {
             System.out.println(playlists.get(i));
         }
     }
+    public int getTrackCount() {
+        return tracks.size();
+    }
+    public int getPlaylistCount() {
+        return playlists.size();
+    }
 
 
 }
